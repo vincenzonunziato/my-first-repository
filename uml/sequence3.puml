@@ -1,0 +1,37 @@
+@startuml
+participant "a Player" as player
+participant "a Board" as board
+participant "a UserInterface" as ui
+
+[-> player : chooseMove
+activate player
+
+alt player is human
+player -> ui : askMove
+activate ui
+
+loop until the user chooses a valid move
+ui -> board : isValidMove
+activate board
+board --> ui
+deactivate board
+end
+
+ui-->player
+deactivate ui
+
+else player is computer
+
+loop for each candidate move
+player -> board : isValidMove
+activate board
+board --> player
+deactivate board
+end
+
+
+end
+
+deactivate player
+
+@enduml

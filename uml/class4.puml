@@ -1,0 +1,53 @@
+@startuml
+class Game {
++{method} play
++{static}{method} main
+}
+
+abstract class Player {
+  -mark
+  +{method}getMark
+  +{method}makeMove
+  +{method}notifyResult
+  #{abstract}{method}chooseMove
+   
+}
+
+class Board {
++{method} isValidMove
++{method} getCellContent
++{method} getNextMark
++{method} applyMove
++{method} isEnded
++{method} getWinner
+}
+
+class UserInterface {
++{method} askMark
++{method} askDifficultyLevel
++{method} showBoard
++{method} askMove
++{method} showResult
++{method} askPlayAgain
+}
+
+class HumanPlayer {
++{method}notifyResult
+#{method}chooseMove
+}
+
+class ComputerPlayer {
+-level
+#{method}chooseMove
+}
+
+Game -right-> UserInterface
+Game --> "2" Player
+Game --> Board
+Player .left.> Board
+Player <|-- HumanPlayer
+Player <|-- ComputerPlayer
+HumanPlayer --> UserInterface
+UserInterface ..> Board
+
+@enduml

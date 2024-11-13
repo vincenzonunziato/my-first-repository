@@ -1,0 +1,32 @@
+@startuml
+sprite $rake [16x16/8] {
+0000000000000000
+0000000jj0000000
+0000000jj0000000
+0005555jj5555000
+000jjeejjeejj000
+000jj00jj00jj000
+000jj00jj00jj000
+0000000000000000
+}
+
+start
+repeat
+
+: Esamina\nprossima mossa ;
+
+if ()  then (mossa valida)
+: <$rake> Calcola valore\nmossa su L turni ;
+
+if () then (valore > valore max)
+  : Memorizza mossa ;
+endif
+
+endif
+
+repeat while () is (altre mosse) 
+
+: Restituisci\n mossa migliore ;
+
+stop
+@enduml

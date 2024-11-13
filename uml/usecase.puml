@@ -1,0 +1,8 @@
+@startuml
+actor "Human Player" as player
+player -- (Start New Game)
+player -- (Play Game)
+player -- (Finish Game)
+(Play Game) ..> (Make Move) : <<include>>
+(Finish Game) ..> (Start New Game) : <<extend>>
+@enduml

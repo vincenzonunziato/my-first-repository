@@ -1,0 +1,33 @@
+@startuml
+class Game {
+{method} play
+}
+
+abstract class Player {
+  mark
+  {method}{abstract} makeMove
+}
+
+class Board {
+{method} applyMove
+{method} isEnded
+{method} getWinner
+}
+
+class HumanPlayer {
+  {method} makeMove
+}
+
+class ComputerPlayer {
+  level
+  {method} makeMove
+}
+
+
+Game --> "2" Player
+Game --> Board
+Player .left.> Board
+Player <|-- HumanPlayer
+Player <|-- ComputerPlayer
+
+@enduml

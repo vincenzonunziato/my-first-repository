@@ -1,0 +1,40 @@
+@startuml
+participant main
+
+activate main
+
+create "a UserInterface" as ui
+main -> ui : new
+
+loop until playAgain is false
+
+create "a Game" as game
+main -> game : start
+activate game
+
+game -> ui : askMark
+activate ui
+ui --> game 
+deactivate ui
+
+game -> ui : askDifficultyLevel
+activate ui
+ui --> game 
+deactivate ui
+
+deactivate game
+
+main -> game : play
+activate game
+deactivate game
+
+main -> ui : askPlayAgain
+activate ui
+ui --> main : playAgain
+deactivate ui
+
+end
+
+deactivate main
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+participant "a Board" as board
+participant "a UserInterface" as ui
+
+[-> ui : showBoard
+activate ui
+
+loop for each cell
+ui -> board: getCellContent
+activate board
+board --> ui
+deactivate board
+end
+
+deactivate ui
+
+
+@enduml

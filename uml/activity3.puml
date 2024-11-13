@@ -1,0 +1,36 @@
+@startuml
+sprite $rake [16x16/8] {
+0000000000000000
+0000000jj0000000
+0000000jj0000000
+0005555jj5555000
+000jjeejjeejj000
+000jj00jj00jj000
+000jj00jj00jj000
+0000000000000000
+}
+
+start
+note right
+  Input: copia board, L
+end note
+     repeat
+       : Esamina \n prossima contromossa ;
+       if ()  then (contromossa valida)
+       : <$rake> Calcola valore\ncontromossa su L-1 turni ;
+       note
+          Ricorsione!
+       end note
+       : valore contromossa = - valore contromossa ;
+       note
+          Una mossa buona per l'avversario
+          è cattiva per questo giocatore!
+       end note
+       if () then (valore contromossa < valore min)
+          : Memorizza valore contromossa ; 
+       endif
+       endif
+     repeat while () is (ancora contromosse)
+     : valore = valore min ;
+stop
+@enduml

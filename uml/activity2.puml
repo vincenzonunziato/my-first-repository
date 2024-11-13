@@ -1,0 +1,35 @@
+@startuml
+sprite $rake [16x16/8] {
+0000000000000000
+0000000jj0000000
+0000000jj0000000
+0005555jj5555000
+000jjeejjeejj000
+000jj00jj00jj000
+000jj00jj00jj000
+0000000000000000
+}
+
+start
+note right
+  Input: board, mossa, L
+end note
+if () then (L > 0)
+  : Crea copia board ;
+  : Applica mossa\nsu copia board ;
+  switch () 
+  case (partita vinta)
+     : valore=10000 ;
+  case  (partita pareggiata)
+     : valore=0 ;
+  case (partita non conclusa)
+     : <$rake> Calcola valore della \n peggiore contromossa ;
+     : valore = valore contromossa ;
+  endswitch
+else (L=0)
+  : valore=0 ;
+endif
+: aggiungi a valore \n un piccolo numero random ;
+: restituisci valore ;
+stop
+@enduml

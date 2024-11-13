@@ -1,0 +1,26 @@
+@startuml
+participant "a Game" as game
+participant "a Player" as player
+participant "a Board" as board
+
+[-> game : findNextPlayer
+activate game
+
+game -> board : getNextMark
+activate board
+board --> game : nextMark
+deactivate board
+
+loop for each player
+game -> player : getMark
+activate player
+player --> game : mark
+deactivate player
+
+end
+
+
+deactivate game
+
+
+@enduml

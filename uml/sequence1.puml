@@ -1,0 +1,43 @@
+@startuml
+participant "a Game" as game
+participant "a Player" as player
+participant "a Board" as board
+participant "a UserInterface" as ui
+
+[-> game : play
+activate game
+
+loop while not board.isEnded
+
+game -> ui : showBoard
+activate ui
+ui --> game
+deactivate ui
+
+game -> game : findNextPlayer
+activate game
+deactivate game
+
+game -> player : makeMove
+activate player
+player -> player : chooseMove
+activate player
+deactivate player
+player -> board : applyMove
+activate board
+board --> player
+deactivate board
+
+player --> game
+deactivate player
+
+end
+
+game -> ui : showBoard
+activate ui
+ui --> game
+deactivate ui
+
+
+deactivate game
+@enduml
